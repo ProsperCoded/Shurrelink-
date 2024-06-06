@@ -1,14 +1,12 @@
 import { useState } from "react";
 import "./styles/App.scss";
 import { Box } from "@mui/material";
-import Home from "./pages/Home";
-import Navbar from "./components/Navbar/Navbar";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <Box className="app">
-      <Navbar />
-      <Home />
+      <Outlet />
     </Box>
   );
 }

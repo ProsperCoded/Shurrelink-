@@ -3,11 +3,14 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { ThemeConfig } from "./config.tsx";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router.tsx";
 
+function Main() {
+  return <RouterProvider router={router} />;
+}
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <ThemeConfig>
-      <App />
-    </ThemeConfig>
-  </React.StrictMode>
+  <ThemeConfig>
+    <Main />
+  </ThemeConfig>
 );

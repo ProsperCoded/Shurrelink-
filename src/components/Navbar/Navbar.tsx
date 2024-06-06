@@ -5,7 +5,6 @@ export default function Navbar() {
     <div>
       <div className="flex w-full">
         <span className="logo"></span>
-        Navbar
       </div>
     </div>
   );
