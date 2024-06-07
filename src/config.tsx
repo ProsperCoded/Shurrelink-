@@ -28,8 +28,6 @@ const theme = createTheme({
     },
     text: {
       primary: colorNeutral.light,
-      // secondary: "#ffffff",
-      // disabled: "gray",
     },
     background: { default: colorNeutral.light },
   },

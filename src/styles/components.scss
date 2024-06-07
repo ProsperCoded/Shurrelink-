@@ -16,3 +16,9 @@
   width: 197px;
   height: 112px;
 }
+.overlay {
+  border-width: 10px;
+  border-style: solid;
+  // border-image-source: linear-gradient()
+  border-image-slice: fill 1;
+}
