@@ -4,8 +4,8 @@ export default function Navbar() {
   return (
     <div>
       <div className="flex w-full">
-        <span className="logo"></span>
-        <ul className="nav-links text-dark font-bold list-none flex gap-4">
+        <span className="logo bg-red-800"></span>
+        <ul className="nav-links text-neutral-dark hover:text-secondary font-bold list-none flex gap-4">
           <li>
             <a href="/">Home</a>
           </li>
