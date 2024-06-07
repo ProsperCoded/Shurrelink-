@@ -1,2 +1,36 @@
 .nav {
+  .logo-container {
+    width: 10rem;
+    height: 4rem;
+  }
+  .nav--links {
+    @apply text-dark  list-none flex gap-4;
+    li {
+      @apply transition-colors hover:text-primary-dark cursor-pointer;
+      padding-bottom: 1px;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 2px;
+        width: 0;
+        background-color: var(--color-primary-dark);
+        transition: width 100ms ease-in;
+      }
+      a {
+        @apply p-0 m-0;
+      }
+    }
+    li:has(:hover):not(.active) {
+      &::after {
+        width: 100%;
+      }
+    }
+    li.active {
+      border-bottom: 2px solid var(--color-primary-dark);
+    }
+  }
 }

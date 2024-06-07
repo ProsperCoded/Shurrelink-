@@ -1,27 +1,65 @@
 import React from "react";
-import logoAndLabel from "./../../assets/logo_and_label.webp";
+import GetStarted from "../utils/GetStarted";
+enum Nav {
+  home,
+  about,
+  locations,
+  contact,
+  offers,
+}
 export default function Navbar() {
+  const [active, setActive] = React.useState<Nav>(Nav.home);
   return (
-    <div>
-      <div className="flex w-full">
-        <span className="logo bg-red-800"></span>
-        <ul className="nav-links text-neutral-dark hover:text-secondary font-bold list-none flex gap-4">
-          <li>
-            <a href="/">Home</a>
+    <div className="nav">
+      <div className="flex w-full items-end justify-around">
+        <div className="logo-container">
+          <span className="logo"></span>
+        </div>
+        <ul className="nav--links">
+          <li
+            className={active === Nav.home ? "active" : ""}
+            onClick={() => {
+              setActive(Nav.home);
+            }}
+          >
+            <a href="/#hero">Home</a>
           </li>
-          <li>
-            <a href="/">About</a>
+          <li
+            className={active === Nav.about ? "active" : ""}
+            onClick={() => {
+              setActive(Nav.about);
+            }}
+          >
+            <a href="/#about">About</a>
           </li>
-          <li>
-            <a href="/">Locations</a>
+          <li
+            className={active === Nav.locations ? "active" : ""}
+            onClick={() => {
+              setActive(Nav.locations);
+            }}
+          >
+            <a href="/#locations">Locations</a>
           </li>
-          <li>
+          <li
+            className={active === Nav.offers ? "active" : ""}
+            onClick={() => {
+              setActive(Nav.offers);
+            }}
+          >
             <a href="/">Offers</a>
           </li>
-          <li>
+          <li
+            className={active === Nav.contact ? "active" : ""}
+            onClick={() => {
+              setActive(Nav.contact);
+            }}
+          >
             <a href="/">Contact</a>
           </li>
         </ul>
+        <div>
+          <GetStarted />
+        </div>
       </div>
     </div>
   );
