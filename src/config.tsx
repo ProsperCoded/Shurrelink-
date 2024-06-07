@@ -27,7 +27,8 @@ const theme = createTheme({
       main: colorSecondary.main,
     },
     text: {
-      primary: colorNeutral.light,
+      primary: colorNeutral.dark,
+      secondary: colorNeutral.light,
     },
     background: { default: colorNeutral.light },
   },

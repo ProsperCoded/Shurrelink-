@@ -1,20 +1,26 @@
 .logo-label {
   display: inline-block;
   background: url("imgs/logo_and_label.webp") no-repeat -102px -90px;
-  width: 98px;
-  height: 42px;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: bottom center;
 }
 .logo {
   background: url("../static/logo_and_label.webp") no-repeat -3px -27px;
   display: inline-block;
-  width: 98px;
-  height: 112px;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: bottom center;
 }
 .logo-and-label {
   display: inline-block;
   background: url("imgs/logo_and_label.webp") no-repeat -3px -27px;
-  width: 197px;
-  height: 112px;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: bottom center;
 }
 .overlay {
   border-width: 10px;

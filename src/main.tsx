@@ -9,7 +9,7 @@ function Main() {
   return <RouterProvider router={router} />;
 }
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  // <ThemeConfig>
-  <Main />
-  // </ThemeConfig>
+  <ThemeConfig>
+    <Main />
+  </ThemeConfig>
 );
