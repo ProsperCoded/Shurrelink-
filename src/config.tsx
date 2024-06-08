@@ -29,7 +29,7 @@ const theme = createTheme({
     },
     text: {
       primary: colorNeutral.dark,
-      secondary: colorNeutral.light,
+      // secondary: colorNeutral.light,
     },
     background: { default: colorNeutral.light },
   },

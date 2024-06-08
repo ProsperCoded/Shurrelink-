@@ -1,22 +1,37 @@
 import React from "react";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import Button from "@mui/material/Button";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
 import GetStarted from "../utils/GetStarted";
+import MenuIcon from "@mui/icons-material/Menu";
+import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import "./Nav.scss";
+import HomeIcon from "@mui/icons-material/Home";
+import InfoIcon from "@mui/icons-material/Info";
+import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
+import { ListSubheader } from "@mui/material";
+
 enum Nav {
   home,
   about,
-  locations,
   contact,
-  offers,
 }
 export default function Navbar() {
   const [active, setActive] = React.useState<Nav>(Nav.home);
+  const [menuOpen, setMenuOpen] = React.useState(false);
   return (
     <div className="nav">
-      <div className="flex w-full items-end justify-around">
+      <div className="flex w-full items-end justify-between md:justify-around">
         <div className="logo-container">
           <span className="logo"></span>
         </div>
-        <ul className="nav--links">
+
+        <ul className="nav--links hidden mx-auto md:flex">
           <li
             className={active === Nav.home ? "active" : ""}
             onClick={() => {
@@ -33,22 +48,7 @@ export default function Navbar() {
           >
             <a href="/#about">About</a>
           </li>
-          <li
-            className={active === Nav.locations ? "active" : ""}
-            onClick={() => {
-              setActive(Nav.locations);
-            }}
-          >
-            <a href="/#locations">Locations</a>
-          </li>
-          <li
-            className={active === Nav.offers ? "active" : ""}
-            onClick={() => {
-              setActive(Nav.offers);
-            }}
-          >
-            <a href="/">Offers</a>
-          </li>
+
           <li
             className={active === Nav.contact ? "active" : ""}
             onClick={() => {
@@ -58,10 +58,72 @@ export default function Navbar() {
             <a href="/">Contact</a>
           </li>
         </ul>
-        <div>
+        <div
+          className="toggler ml-auto md:hidden"
+          onClick={() => {
+            setMenuOpen((p) => !p);
+          }}
+        >
+          {menuOpen ? <MenuOpenIcon /> : <MenuIcon />}
+        </div>
+        <TemporaryDrawer open={menuOpen} setOpen={setMenuOpen} />
+        <div className="hidden md:block">
           <GetStarted />
         </div>
       </div>
+    </div>
+  );
+}
+
+export function TemporaryDrawer({
+  open,
+  setOpen,
+}: {
+  open: boolean;
+  setOpen: Function;
+}) {
+  const toggleDrawer = (newOpen: boolean) => () => {
+    setOpen(newOpen);
+  };
+
+  const DrawerList = (
+    <Box sx={{ width: 250 }} role="Navigation" onClick={toggleDrawer(false)}>
+      <List>
+        <ListSubheader>Navigation</ListSubheader>
+        <ListItem disablePadding color="secondary">
+          <ListItemButton>
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding color="secondary">
+          <ListItemButton>
+            <ListItemIcon>
+              <InfoIcon />
+            </ListItemIcon>
+            <ListItemText primary="About" />
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem disablePadding color="secondary">
+          <ListItemButton>
+            <ListItemIcon>
+              <ContactPhoneIcon />
+            </ListItemIcon>
+            <ListItemText primary="Contact" />
+          </ListItemButton>
+        </ListItem>
+      </List>
+    </Box>
+  );
+
+  return (
+    <div>
+      <Drawer open={open} onClose={toggleDrawer(false)}>
+        {DrawerList}
+      </Drawer>
     </div>
   );
 }

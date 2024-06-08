@@ -4,7 +4,9 @@
     height: 4rem;
   }
   .nav--links {
-    @apply text-dark  list-none flex gap-4;
+    // already set in the inline-class
+    // display: flex;
+    @apply text-dark  list-none gap-2 md:gap-4;
     li {
       @apply transition-colors hover:text-primary-dark cursor-pointer;
       padding-bottom: 1px;

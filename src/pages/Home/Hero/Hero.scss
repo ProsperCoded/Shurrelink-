@@ -2,7 +2,6 @@
   background-image: url("../static/hero.webp");
   background-repeat: no-repeat;
   background-size: cover;
-  background-origin: center;
   background-position: center;
   @apply w-[auto] min-w-[80%] rounded-2xl h-[40vh] md:h-[55vh] m-4;
 }
