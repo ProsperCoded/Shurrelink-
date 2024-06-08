@@ -1,5 +1,6 @@
 import React from "react";
 import GetStarted from "../utils/GetStarted";
+import "./Nav.scss";
 enum Nav {
   home,
   about,

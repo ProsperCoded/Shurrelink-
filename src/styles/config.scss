@@ -29,6 +29,7 @@
 }
 body {
   @extend .font-primary-medium;
+  min-height: 100vh;
 }
 // declaring colors, only light themed
 

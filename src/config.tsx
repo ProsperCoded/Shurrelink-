@@ -14,6 +14,7 @@ const colorNeutral = {
 };
 const fontPrimary = "Montserrat";
 const fontSecondary = "Montserrat";
+const known = 2;
 const theme = createTheme({
   palette: {
     contrastThreshold: 5,
