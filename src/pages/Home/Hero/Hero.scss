@@ -4,4 +4,31 @@
   background-size: cover;
   background-position: center;
   @apply w-[auto] min-w-[80%] rounded-2xl h-[40vh] md:h-[55vh] m-4;
+  z-index: 1;
+  position: relative;
+  --inset: 3rem;
+  .content::after {
+    content: "";
+    inset: var(--inset);
+    @apply rounded-lg shadow-xl;
+    z-index: -1;
+    position: absolute;
+    opacity: 0.5;
+    background: linear-gradient(
+      to right,
+      rgb(182, 244, 146),
+      rgb(51, 139, 147)
+    );
+    mix-blend-mode: multiply;
+  }
+  .content > :first-child {
+    position: absolute;
+    inset: var(--inset);
+
+    @apply flex items-center justify-start flex-col p-4 text-light text-xl text-center;
+    text-shadow: 0 0 3px #252525;
+    p {
+      text-shadow: 0 0 4px #021e00;
+    }
+  }
 }
