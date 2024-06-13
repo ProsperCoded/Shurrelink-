@@ -5,6 +5,7 @@ const colorPrimary = {
   dark: "#39a749",
   light: "#89ff67",
 };
+
 const colorSecondary = {
   main: "#1895b1",
 };
@@ -14,7 +15,6 @@ const colorNeutral = {
 };
 const fontPrimary = "Montserrat";
 const fontSecondary = "Montserrat";
-const known = 2;
 const theme = createTheme({
   palette: {
     contrastThreshold: 5,

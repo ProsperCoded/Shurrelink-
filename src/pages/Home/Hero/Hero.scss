@@ -6,7 +6,7 @@
   @apply w-[auto] min-w-[80%] rounded-2xl h-[40vh] md:h-[55vh] m-4;
   z-index: 1;
   position: relative;
-  --inset: 3rem;
+  --inset: 4vw;
   .content::after {
     content: "";
     inset: var(--inset);
@@ -29,6 +29,149 @@
     text-shadow: 0 0 3px #252525;
     p {
       text-shadow: 0 0 4px #021e00;
+    }
+  }
+}
+.modal-child {
+  overflow-y: auto;
+}
+.hero-addon {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  right: 0;
+
+  @apply w-fit max-w-[90%] md:max-w-[70%] min-h-[5rem] rounded-xl bg-primary-light mx-auto p-3;
+  & > * {
+    display: inline-block;
+    @apply hover:bg-primary-dark transition-colors rounded-md;
+    position: relative;
+  }
+
+  .adsClickIcon {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    // animation
+    /* Set initial position (optional, adjust if needed) */
+    transform: translateX(0) translateY(0);
+    /* Animation settings (adjust duration and easing as desired) */
+    animation: moveIcon 0.6s ease-in-out alternate;
+    animation-iteration-count: 15;
+  }
+  .adsClickIcon::before,
+  .adsClickIcon::after {
+    /* Initial styles for circles */
+    content: "";
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%; /* Set circle shape */
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black */
+    opacity: 0; /* Initially invisible */
+    animation: pulsate 0.6s ease-in-out alternate; /* Animation settings */
+    animation-iteration-count: 15;
+  }
+
+  .adsClickIcon::before {
+    /* Animation delay for first circle */
+    animation-delay: 0.1s;
+  }
+
+  .adsClickIcon::after {
+    /* Animation delay for second circle */
+    animation-delay: 0.4s;
+  }
+}
+@keyframes moveIcon {
+  from {
+    transform: translateX(0) translateY(0);
+  }
+  to {
+    transform: translateX(-20px) translateY(-20px);
+  }
+}
+@keyframes pulsate {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.5); /* Increase size for swelling effect */
+  }
+}
+
+.available-locations {
+  .content {
+    @apply flex flex-col gap-4 xl:gap-8 xl:grid grid-cols-2;
+  }
+  header {
+    @apply rounded-full py-1 px-0.5 bg-slate-100 relative;
+    z-index: 1;
+    .item_labelled {
+      @apply p-3 m-4  border-primary border-2 rounded-md relative min-w-[14ch] md:min-w-[20ch] font-secondary;
+    }
+    .send-icon {
+      @apply border-2 bg-slate-100 rounded-full border-primary inline-block size-6;
+      margin-left: -25px;
+      z-index: 1;
+    }
+    .item {
+      @apply font-bold;
+    }
+    .label {
+      padding: 0.3rem;
+      @apply bg-slate-100;
+      position: absolute;
+      top: 0;
+      left: 10%;
+      transform: translateY(-50%);
+    }
+    .collapse-toggler {
+      margin-left: auto;
+      svg {
+        transition: rotate 150ms linear;
+      }
+      &.collapsed {
+        svg {
+          rotate: 90deg;
+        }
+      }
+    }
+  }
+  .location {
+    @apply lg:w-min;
+  }
+  .description {
+    margin-top: -40px;
+    padding: 1.5rem;
+    padding-top: 50px;
+    display: grid;
+    row-gap: 0.5rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr auto;
+    @apply rounded-b-md shadow-md;
+    &__property {
+      @apply font-bold;
+    }
+    &__property-value {
+      // @apply font-secondary tracking-wide;
+    }
+    & > *:last-child {
+      grid-column: span 2;
+    }
+    .requirements ul {
+      list-style-type: square;
+      color: var(--color-primary);
+
+      padding-left: 1rem;
+      span {
+        color: var(--color-dark);
+      }
     }
   }
 }
