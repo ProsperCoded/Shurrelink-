@@ -67,7 +67,7 @@ export default function Navbar() {
         </div>
         <TemporaryDrawer open={menuOpen} setOpen={setMenuOpen} />
         <div className="hidden md:block">
-          <GetStarted />
+          <GetStarted variant="outlined" />
         </div>
       </div>
     </div>

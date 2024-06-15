@@ -49,3 +49,8 @@ export function ThemeConfig({ children }: { children: React.ReactNode }) {
     </ThemeProvider>
   );
 }
+export const acceptedCurrencies: { [key: string]: CurrencyType }[] = [
+  { NGN: "₦" },
+  { USD: "$" },
+  { EUR: "€" },
+];

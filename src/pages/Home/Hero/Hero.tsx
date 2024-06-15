@@ -1,17 +1,22 @@
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 import {
+  Autocomplete,
   Box,
   Button,
   Collapse,
+  Divider,
   FormControl,
+  FormGroup,
+  FormLabel,
   Grow,
   IconButton,
-  Input,
   InputLabel,
   MenuItem,
   Modal,
-  Paper,
   Select,
+  Slider,
+  TextField,
   useTheme,
 } from "@mui/material";
 import "./Hero.scss";
@@ -20,15 +25,22 @@ import MapIcon from "@mui/icons-material/Map";
 import AdsClickIcon from "@mui/icons-material/AdsClick";
 import PinDropIcon from "@mui/icons-material/PinDrop";
 import SendIcon from "@mui/icons-material/Send";
-import { useCallback, useContext, useMemo, useState } from "react";
+import { useContext, useMemo, useRef, useState } from "react";
 import {
   ArrowRight,
   ArrowRightAltOutlined,
   CancelRounded,
 } from "@mui/icons-material";
-import { convertFromNaira, numberWithCommas } from "../../../libs/utils";
+import {
+  convertFromNaira,
+  convertPrices,
+  getMinPriceAndMaxPrice,
+  numberWithCommas,
+} from "../../../libs/utils";
 import { ExchangeRatesContext } from "../../../App";
-import { ExchangeRates } from "../../../types";
+import { CurrencyType, ExchangeRates, LocationType } from "../../../types";
+import { acceptedCurrencies } from "../../../config";
+import { uniq } from "lodash";
 function Hero() {
   return (
     <div className="hero">
@@ -91,21 +103,8 @@ function HeroAddon() {
     </div>
   );
 }
-type Location = {
-  from: string;
-  purpose: string;
-  to: string;
-  priceRange: { start: number; end: number };
-  requirements: string[];
-};
-const acceptedCurrencies: { [key: string]: CurrencyType }[] = [
-  { NGN: "₦" },
-  { USD: "$" },
-  { EUR: "€" },
-];
 
-type CurrencyType = "₦" | "$" | "€";
-const locations: Location[] = [
+const locations: LocationType[] = [
   {
     from: "Nigeria",
     to: "Saudi Arabia",
@@ -328,7 +327,45 @@ const locations: Location[] = [
 function AvailableLocations({ setOpen }: { setOpen: Function }) {
   const [openSettings, setOpenSettings] = useState(false);
   const [currency, setCurrency] = useState(acceptedCurrencies[0].NGN);
-  // const [filter]
+  const priceRange = getMinPriceAndMaxPrice(locations);
+  const [restrictedPriceRange, setRestrictedPriceRange] = useState([
+    priceRange.min,
+    priceRange.max,
+  ]);
+  const [searchValue, setSearchValue] = useState("");
+  const locationOptions = useMemo(() => {
+    // map out names, and flatten items returned as list
+    const flattenedList = locations
+      .map((option) => {
+        return [option.from, option.to];
+      })
+      .flat();
+    // remove any duplicate item from list
+    const uniqueList = uniq(flattenedList);
+    return uniqueList;
+  }, []);
+  const locationsAfterFilter = useMemo(() => {
+    let filteredLocations = locations;
+    // filter by price range
+    filteredLocations = filteredLocations.filter((l) => {
+      if (
+        l.priceRange.start >= restrictedPriceRange[0] &&
+        l.priceRange.end <= restrictedPriceRange[1]
+      )
+        return true;
+    });
+    if (searchValue) {
+      // filter by search value
+      filteredLocations = filteredLocations.filter((l) => {
+        return (
+          l.from.toLowerCase().includes(searchValue.toLowerCase()) ||
+          l.to.toLowerCase().includes(searchValue.toLowerCase())
+        );
+      });
+    }
+    return filteredLocations;
+  }, [locations, restrictedPriceRange, searchValue]);
+  const exchangeRates = useContext(ExchangeRatesContext) as ExchangeRates;
   return (
     <div className="available-locations">
       <h1 className="text-3xl font-bold">
@@ -370,11 +407,15 @@ function AvailableLocations({ setOpen }: { setOpen: Function }) {
                   setCurrency(e.target.value as CurrencyType);
                 }}
               >
-                {acceptedCurrencies.map((c) => {
+                {acceptedCurrencies.map((c, i) => {
                   let name = Object.keys(c)[0];
                   let value = c[name] as string;
                   return (
-                    <MenuItem value={value} selected={value === currency}>
+                    <MenuItem
+                      value={value}
+                      selected={value === currency}
+                      key={i}
+                    >
                       {value} - {name}
                     </MenuItem>
                   );
@@ -382,11 +423,51 @@ function AvailableLocations({ setOpen }: { setOpen: Function }) {
               </Select>
             </FormControl>
           </div>
+          <div className="flex justify-between items-center">
+            <h3 className="font-bold">Filter According To Prices</h3>
+            <Slider
+              getAriaLabel={() => "Min & Max Setter"}
+              value={restrictedPriceRange}
+              onChange={(e: any) => {
+                setRestrictedPriceRange(e.target.value);
+                // console.log("changed to", e.target.value);
+              }}
+              // step={100}
+              // marks
+              min={priceRange.min}
+              max={priceRange.max}
+              valueLabelDisplay="on"
+              getAriaValueText={(e) => {
+                return convertPrices(
+                  currency,
+                  { priceRange: { start: 0, end: e } },
+                  exchangeRates
+                ).end;
+              }}
+            />
+          </div>
         </Collapse>
       </div>
-
+      <Autocomplete
+        id="search"
+        freeSolo
+        value={searchValue}
+        onChange={(e: any) => {
+          console.log("value is ", e.target.value);
+          setSearchValue(e.target.value);
+        }}
+        getOptionLabel={(option: string) => {
+          console.log("option", option);
+          if (!option) return "none";
+          return option;
+        }}
+        options={locationOptions}
+        renderInput={(params) => (
+          <TextField {...params} label="Search Destination" />
+        )}
+      />
       <div className="content">
-        {locations.map((l) => {
+        {locationsAfterFilter.map((l, i) => {
           return (
             <LocationComponent
               location={{
@@ -396,10 +477,49 @@ function AvailableLocations({ setOpen }: { setOpen: Function }) {
                 requirements: l.requirements,
                 purpose: l.purpose,
               }}
+              key={i}
               currency={currency}
             />
           );
         })}
+      </div>
+      <div className="[&&&]:mt-8 border border-slate-300 p-3 rounded-md">
+        <Divider>
+          <h1 className="text-lg font-bold">REQUEST A LOCATION</h1>
+        </Divider>
+        <h5 className="text-lg text-secondary italic font-secondary">
+          Didn't find What You Where looking for ❔🤔
+          <br /> Request a location your needed destination and we will try to
+          make it possible
+        </h5>
+        <h3>Kindly Fill In Request Information Below </h3>
+        <div className="flex flex-col gap-3 justify-center">
+          <h2 className="w-2/3 mx-auto font-bold text-xl text-center">
+            Request Form <ReceiptLongIcon fontSize="small" />
+          </h2>
+          {/* <Input size="medium"></Input> */}
+          <div className="flex gap-2 flex-col lg:max-w-[50vw] w-full mx-auto">
+            <TextField label="From" value={"Nigeria"} />
+            <TextField label="To" />
+            <FormGroup>
+              <FormLabel sx={{ mb: 1, mt: 2 }}>
+                Give Travel Purpose(optional)
+              </FormLabel>
+              {/* <TextField color="neutral" minRows={3} size="lg" variant="soft" /> */}
+              <TextField
+                label="Your Message"
+                multiline
+                rows={4} // Adjust rows as needed
+              />
+            </FormGroup>
+          </div>
+          <Button
+            variant="contained"
+            sx={{ borderRadius: "100px", mx: "auto" }}
+          >
+            Place Request
+          </Button>
+        </div>
       </div>
     </div>
   );
@@ -410,7 +530,7 @@ const LocationComponent = ({
   location,
   currency,
 }: {
-  location: Location;
+  location: LocationType;
   currency?: CurrencyType;
 }) => {
   const [contentCollapsed, setContentCollapsed] = useState(false);
@@ -419,36 +539,9 @@ const LocationComponent = ({
   }
   const theme = useTheme();
   const exchangeRates = useContext(ExchangeRatesContext) as ExchangeRates;
+
   const convertedPriceRange = useMemo(() => {
-    let start;
-    let end;
-    if (currency === acceptedCurrencies[1].USD) {
-      start =
-        currency +
-        numberWithCommas(
-          convertFromNaira(location.priceRange.start, "USD", exchangeRates)
-        );
-      end =
-        currency +
-        numberWithCommas(
-          convertFromNaira(location.priceRange.end, "USD", exchangeRates)
-        );
-    } else if (currency === acceptedCurrencies[1].EUR) {
-      start =
-        currency +
-        numberWithCommas(
-          convertFromNaira(location.priceRange.start, "EUR", exchangeRates)
-        );
-      end =
-        currency +
-        numberWithCommas(
-          convertFromNaira(location.priceRange.end, "EUR", exchangeRates)
-        );
-    } else {
-      start = currency + numberWithCommas(location.priceRange.start);
-      end = currency + numberWithCommas(location.priceRange.end);
-    }
-    return { start, end };
+    return convertPrices(currency, location, exchangeRates);
   }, [currency]);
   return (
     <div className="location">

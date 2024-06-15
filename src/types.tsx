@@ -164,3 +164,12 @@ export type CurrencyKeyType =
   | "ZAR"
   | "ZMW"
   | "ZWL";
+
+export type LocationType = {
+  from: string;
+  purpose: string;
+  to: string;
+  priceRange: { start: number; end: number };
+  requirements: string[];
+};
+export type CurrencyType = "₦" | "$" | "€";

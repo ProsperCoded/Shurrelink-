@@ -3,7 +3,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  @apply w-[auto] min-w-[80%] rounded-2xl h-[40vh] md:h-[55vh] m-4;
+  @apply w-[auto] min-w-[80%] rounded-2xl h-[40vh] md:h-[55vh] my-4;
   z-index: 1;
   position: relative;
   --inset: 4vw;
@@ -34,6 +34,7 @@
 }
 .modal-child {
   overflow-y: auto;
+  overflow-x: hidden;
 }
 .hero-addon {
   position: absolute;
@@ -106,6 +107,7 @@
 }
 
 .available-locations {
+  @apply space-y-4;
   .content {
     @apply flex flex-col gap-4 xl:gap-8 xl:grid grid-cols-2;
   }
