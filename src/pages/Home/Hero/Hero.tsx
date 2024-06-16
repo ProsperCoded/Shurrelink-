@@ -517,7 +517,7 @@ function AvailableLocations({ setOpen }: { setOpen: Function }) {
             variant="contained"
             sx={{ borderRadius: "100px", mx: "auto" }}
           >
-            Place Request
+            Send Request
           </Button>
         </div>
       </div>

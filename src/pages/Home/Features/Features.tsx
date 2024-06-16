@@ -11,10 +11,8 @@ function Features() {
     <div className="features">
       <div className="content">
         <div>
-          <h3 className="text-lg text-primary-dark font-bold tracking-wider">
-            Welcome to Shurrlink
-          </h3>
-          <h1 className="text-4xl font-bold my-2 mb-3">
+          <h3 className="section-highlight">Welcome to Shurrlink</h3>
+          <h1 className="section-heading my-2 mb-3">
             LET THE TRAVELER IN YOU FLY WITH US
           </h1>
           <p className="font-secondary">

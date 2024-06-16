@@ -1,0 +1,110 @@
+// .our-destination {
+//   background-image: url("../static/our-destination.webp");
+//   background-size: cover;
+//   background-position: center;
+//   margin-top: 10%;
+//   height: 40vh;
+//   width: 100%;
+//   z-index: 1;
+//   position: relative;
+//   color: var(--color-light);
+
+//   border-radius: var(--container-border-radius);
+//   overflow: hidden;
+//   padding: 1rem;
+//   &::after {
+//     content: "";
+//     position: absolute;
+//     inset: 0;
+//     z-index: -1;
+
+//     background-color: rgb(255 255 255 / 40%);
+//     mix-blend-mode: overlay;
+//   }
+// }
+
+.our-destination {
+  @apply bg-slate-200 p-[1rem] pt-[2rem] lg:p-[3rem];
+  border-radius: var(--container-border-radius);
+  .content {
+    display: grid;
+    @apply md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr] max-h-[70vmax] overflow-y-auto;
+    gap: 1.5rem;
+    &::-webkit-scrollbar {
+      width: 16px;
+      z-index: -1;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f5f5f5;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--color-primary);
+      border-radius: 10px;
+      border: 3px solid #f5f5f5;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: var(--color-primary-dark);
+    }
+  }
+  .card {
+    border-radius: 0.5rem;
+    background-color: var(--color-light);
+    @apply w-fit overflow-hidden text-center shadow-lg border-2 border-slate-100;
+    // width: 18rem;
+    min-height: 25rem;
+    display: grid;
+
+    grid-template-rows: 1.4fr 1fr;
+    transition-property: transform box-shadow;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in;
+    .card__name {
+      @apply font-bold text-lg text-slate-800 capitalize my-2 max-w-[80%] mx-auto;
+      line-height: 1.1;
+    }
+    .card__description {
+      @apply text-slate-500 my-2  font-semibold text-base font-sans italic;
+      line-height: 1.1;
+    }
+    .card__image-container {
+      // height: 40px;
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        box-shadow: inset 0 0 12px 9px #00000042;
+        z-index: 1;
+      }
+      overflow: hidden;
+
+      img {
+        object-fit: cover;
+        min-height: 100%;
+        min-width: 100%;
+        object-position: center;
+        transition: scale 200ms linear;
+      }
+    }
+
+    .card__link {
+      @apply text-primary-dark font-secondary font-bold text-sm;
+      svg {
+        transition: transform 100ms linear;
+      }
+      &:hover svg {
+        transform: translateX(5px);
+      }
+    }
+    &:hover {
+      img {
+        scale: 1.3;
+      }
+      transform: translateY(-5px);
+      @apply shadow-2xl;
+    }
+  }
+}

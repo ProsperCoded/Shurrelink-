@@ -3,7 +3,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  @apply w-[auto] min-w-[80%] rounded-2xl h-[40vh] md:h-[55vh] my-4;
+  @apply w-[auto] min-w-[80%]  h-[40vh] md:h-[55vh] my-4 mb-[5rem];
+  border-radius: var(--container-border-radius);
   z-index: 1;
   position: relative;
   --inset: 4vw;
