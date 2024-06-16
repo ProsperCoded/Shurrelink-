@@ -9,6 +9,7 @@ import GalapogosIslandsEcuador from "./../../../assets/our-destination/Galápago
 
 // import GreatBarrierReef from "./../../../assets/our-destination/";
 import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 const destinations = [
   {
     title: "Banff National Park, Canada",
@@ -75,22 +76,14 @@ function OurDestination() {
           );
         })}
       </div>
+      <a href="#quote" className="nav-icon">
+        <KeyboardArrowDownIcon
+          fontSize="large"
+          color="secondary"
+          sx={{ fontSize: "6rem" }}
+        />
+      </a>
     </div>
   );
 }
 export default OurDestination;
-// function OurDestination() {
-//   return (
-//     <div className="our-destination">
-//       <p
-//         className="section-highlight text-center text-primary-light"
-//         style={{
-//           textShadow: "0 0 4px rgba(0,0,0, 0.5)",
-//         }}
-//       >
-//         OUR DESTINATION
-//       </p>
-//       <p className="section-heading text-center">OUR BEST DESTINATION</p>
-//     </div>
-//   );
-// }

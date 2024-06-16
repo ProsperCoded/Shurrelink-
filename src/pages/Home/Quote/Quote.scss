@@ -1,0 +1,44 @@
+.quote {
+  background-image: url("../static/airplane-on-map.jpg");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  vertical-align: center;
+  border-radius: var(--container-border-radius);
+  overflow: hidden;
+  @apply px-3 py-6  md:px-5 md:py-[5rem];
+  p {
+    @apply font-bold font-serif text-xl md:text-4xl italic text-light tracking-wide;
+    &::before,
+    &::after {
+      content: "";
+      background-image: url("../static/quote.webp");
+      background-size: contain;
+      min-width: 50px;
+      min-height: 50px;
+      background-repeat: no-repeat;
+      position: absolute;
+      object-fit: contain;
+      top: 10%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: fit-content;
+    }
+    &::after {
+      top: initial;
+      bottom: 5%;
+      transform: rotateY(180deg);
+    }
+  }
+  position: relative;
+  z-index: 1;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: rgba(48, 56, 0, 0.555);
+    mix-blend-mode: multiply;
+  }
+}

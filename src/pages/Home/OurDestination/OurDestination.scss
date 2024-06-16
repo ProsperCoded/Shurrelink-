@@ -24,7 +24,7 @@
 // }
 
 .our-destination {
-  @apply bg-slate-200 p-[1rem] pt-[2rem] lg:p-[3rem];
+  @apply bg-slate-200 p-[1rem] pt-[2rem] lg:p-[3rem] relative;
   border-radius: var(--container-border-radius);
   .content {
     display: grid;
@@ -106,5 +106,15 @@
       transform: translateY(-5px);
       @apply shadow-2xl;
     }
+  }
+
+  .nav-icon {
+    position: absolute;
+    top: 95%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
   }
 }

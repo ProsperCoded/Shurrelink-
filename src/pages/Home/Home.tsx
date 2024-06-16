@@ -1,8 +1,10 @@
 import { Button, Container, useTheme } from "@mui/material";
 import Hero from "./Hero/Hero";
 import Features from "./Features/Features";
+import Quote from "./Quote/Quote";
 import "./Home.scss";
 import OurDestination from "./OurDestination/OurDestination";
+
 export default function Home() {
   const theme = useTheme();
   // console.log(theme.palette.primary.dark);
@@ -12,6 +14,7 @@ export default function Home() {
         <Hero />
         <Features />
         <OurDestination />
+        <Quote />
       </div>
     </Container>
   );
