@@ -5,6 +5,7 @@ import Quote from "./Quote/Quote";
 import "./Home.scss";
 import OurDestination from "./OurDestination/OurDestination";
 import Testimonials from "./Testimonials/Testimonials";
+import OurTeam from "./OurTeam/OurTeam";
 
 export default function Home() {
   const theme = useTheme();
@@ -17,6 +18,7 @@ export default function Home() {
         <OurDestination />
         <Quote />
         <Testimonials />
+        <OurTeam />
       </div>
     </Container>
   );
