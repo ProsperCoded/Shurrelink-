@@ -15,7 +15,7 @@ function Features() {
           <h1 className="section-heading my-2 mb-3">
             LET THE TRAVELER IN YOU FLY WITH US
           </h1>
-          <p className="font-secondary">
+          <p className="section-text">
             We help Nigerians relocate and travel to established countries with
             ease, providing assistance with employment, schooling, and
             migration. We manage all procedures and handle flights for a

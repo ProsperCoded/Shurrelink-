@@ -1,0 +1,27 @@
+.testimonials {
+  .content {
+    grid-template-columns: 1fr minmax(20px, 1.2fr);
+
+    gap: 2rem;
+    @apply flex  flex-col lg:grid;
+  }
+}
+.testimonial {
+  @apply font-secondary bg-slate-200 shadow-md grid grid-rows-[1.2fr_1fr]  rounded-lg p-4 max-w-[20rem] min-h-[10rem];
+  & :has(> .testimonial__name) {
+    @apply inline-flex flex-col;
+  }
+  .testimonial__name {
+    @apply font-extrabold;
+  }
+  .testimonial__career {
+    @apply font-bold text-slate-600;
+  }
+}
+.testimonials-grid {
+  display: grid;
+  @apply grid-cols-1 md:grid-cols-2;
+  justify-items: center;
+  align-items: start;
+  gap: 1rem;
+}

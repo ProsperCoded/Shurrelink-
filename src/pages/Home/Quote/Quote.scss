@@ -41,4 +41,26 @@
     background-color: rgba(48, 56, 0, 0.555);
     mix-blend-mode: multiply;
   }
+  .author {
+    @apply text-light font-bold text-lg;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: "";
+      bottom: 0;
+      top: 0;
+      margin: auto 0;
+      width: 20px;
+      height: 2px;
+      position: absolute;
+      background-color: var(--color-light);
+    }
+    &::before {
+      right: 105%;
+    }
+    &::after {
+      left: 105%;
+    }
+  }
 }

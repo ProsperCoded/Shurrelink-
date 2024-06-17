@@ -1,5 +1,6 @@
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import {} from "@mui/material/colors";
+import { CurrencyType } from "./types";
 const colorPrimary = {
   main: "#7ecf4c",
   dark: "#39a749",
@@ -54,3 +55,8 @@ export const acceptedCurrencies: { [key: string]: CurrencyType }[] = [
   { USD: "$" },
   { EUR: "€" },
 ];
+export const IS_DESKTOP_AND_ABOVE = window.innerWidth >= 1200;
+export const IS_EXTRA_LARGE_AND_ABOVE = window.innerWidth >= 1600;
+export const IS_MOBILE_SMALL = window.innerWidth < 400;
+export const IS_MOBILE_LARGE = window.innerWidth < 600;
+export const IS_IPAD_AND_ABOVE = window.innerWidth >= 600;
