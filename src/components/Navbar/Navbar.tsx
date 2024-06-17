@@ -6,7 +6,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import GetStarted from "../utils/GetStarted";
+import CallToAction from "../utils/GetStarted";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import "./Nav.scss";
@@ -67,7 +67,7 @@ export default function Navbar() {
         </div>
         <TemporaryDrawer open={menuOpen} setOpen={setMenuOpen} />
         <div className="hidden md:block">
-          <GetStarted variant="outlined" />
+          <CallToAction variant="outlined" text="Get Started" />
         </div>
       </div>
     </div>

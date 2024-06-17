@@ -1,6 +1,6 @@
 import React from "react";
 import "./Features.scss";
-import GetStarted from "../../../components/utils/GetStarted";
+import CallToAction from "../../../components/utils/GetStarted";
 import PrivacyImage from "./../../../assets/img/privacy_policy.webp";
 import WhyChooseUsImage from "./../../../assets/img/why_choose_us.webp";
 import HowWeDeliverImage from "./../../../assets/img/how_we_deliver.webp";
@@ -22,7 +22,7 @@ function Features() {
             seamless, hassle-free experience.
           </p>
           <div className="mt-6">
-            <GetStarted variant="contained" />
+            <CallToAction variant="contained" text="Get Started" />
           </div>
         </div>
         <div className="features__images--phone lg:hidden">

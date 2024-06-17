@@ -6,6 +6,8 @@ import "./Home.scss";
 import OurDestination from "./OurDestination/OurDestination";
 import Testimonials from "./Testimonials/Testimonials";
 import OurTeam from "./OurTeam/OurTeam";
+import Memories from "./LastCallToAction/LastCallToAction";
+import LastCallToAction from "./LastCallToAction/LastCallToAction";
 
 export default function Home() {
   const theme = useTheme();
@@ -19,6 +21,7 @@ export default function Home() {
         <Quote />
         <Testimonials />
         <OurTeam />
+        <LastCallToAction />
       </div>
     </Container>
   );

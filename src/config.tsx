@@ -1,5 +1,4 @@
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
-import {} from "@mui/material/colors";
 import { CurrencyType } from "./types";
 const colorPrimary = {
   main: "#7ecf4c",

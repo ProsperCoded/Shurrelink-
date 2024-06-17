@@ -2,8 +2,8 @@ import React from "react";
 import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
 import { Button, IconButton } from "@mui/material";
 
-const GetStarted = React.memo(
-  ({ variant }: { variant: "outlined" | "contained" }) => {
+const CallToAction = React.memo(
+  ({ variant, text }: { variant: "outlined" | "contained"; text: string }) => {
     return (
       <div className="cta">
         <Button
@@ -24,11 +24,11 @@ const GetStarted = React.memo(
           }}
         >
           <span>
-            Get Started <TrendingFlatIcon />
+            {text} <TrendingFlatIcon />
           </span>
         </Button>
       </div>
     );
   }
 );
-export default GetStarted;
+export default CallToAction;
