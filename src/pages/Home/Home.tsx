@@ -8,6 +8,7 @@ import Testimonials from "./Testimonials/Testimonials";
 import OurTeam from "./OurTeam/OurTeam";
 import Memories from "./LastCallToAction/LastCallToAction";
 import LastCallToAction from "./LastCallToAction/LastCallToAction";
+import FAQs from "./FAQs/FAQs";
 
 export default function Home() {
   const theme = useTheme();
@@ -22,6 +23,7 @@ export default function Home() {
         <Testimonials />
         <OurTeam />
         <LastCallToAction />
+        <FAQs />
       </div>
     </Container>
   );

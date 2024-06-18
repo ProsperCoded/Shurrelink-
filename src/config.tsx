@@ -1,5 +1,14 @@
-import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
 import { CurrencyType } from "./types";
+
+import {
+  experimental_extendTheme as materialExtendTheme,
+  Experimental_CssVarsProvider as MaterialCssVarsProvider,
+  THEME_ID as MATERIAL_THEME_ID,
+} from "@mui/material/styles";
+import { CssVarsProvider as JoyCssVarsProvider } from "@mui/joy/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+
 const colorPrimary = {
   main: "#7ecf4c",
   dark: "#39a749",
@@ -15,6 +24,7 @@ const colorNeutral = {
 };
 const fontPrimary = "Montserrat";
 const fontSecondary = "Montserrat";
+
 const theme = createTheme({
   palette: {
     contrastThreshold: 5,
@@ -40,13 +50,16 @@ const theme = createTheme({
     },
   },
 });
+const materialTheme = materialExtendTheme(theme);
 
 export function ThemeConfig({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      {children}
-    </ThemeProvider>
+    <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
+      <JoyCssVarsProvider>
+        <CssBaseline enableColorScheme />
+        {children}
+      </JoyCssVarsProvider>
+    </MaterialCssVarsProvider>
   );
 }
 export const acceptedCurrencies: { [key: string]: CurrencyType }[] = [

@@ -1,6 +1,7 @@
 import React from "react";
 import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
-import { Button, IconButton } from "@mui/material";
+// import { Button } from "@mui/joy";
+import { Button } from "@mui/material";
 
 const CallToAction = React.memo(
   ({ variant, text }: { variant: "outlined" | "contained"; text: string }) => {
