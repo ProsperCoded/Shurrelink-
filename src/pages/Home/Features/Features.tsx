@@ -1,6 +1,6 @@
 import React from "react";
 import "./Features.scss";
-import CallToAction from "../../../components/utils/GetStarted";
+import CallToAction from "../../../components/utils/CallToAction";
 import PrivacyImage from "./../../../assets/img/privacy_policy.webp";
 import WhyChooseUsImage from "./../../../assets/img/why_choose_us.webp";
 import HowWeDeliverImage from "./../../../assets/img/how_we_deliver.webp";

@@ -4,11 +4,11 @@ import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
 import { Button } from "@mui/material";
 
 const CallToAction = React.memo(
-  ({ variant, text }: { variant: "outlined" | "contained"; text: string }) => {
+  ({ variant, text , color}: { variant: "outlined" | "contained"; text: string, color?:"primary"|"secondary" }) => {
     return (
       <div className="cta">
         <Button
-          color="primary"
+          color={color || "primary"}
           variant={variant}
           sx={{
             px: 2,

@@ -124,9 +124,9 @@ function Testimonials() {
               setActiveStep(n);
             }}
           >
-            {testimonials_nested.map((testimonials) => {
+            {testimonials_nested.map((testimonials,i) => {
               return (
-                <div className="testimonials-grid">
+                <div className="testimonials-grid" key={i}>
                   {testimonials.map((testimonial) => {
                     return (
                       <div className="testimonial">

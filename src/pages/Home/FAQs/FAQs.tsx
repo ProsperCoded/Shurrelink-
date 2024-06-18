@@ -69,6 +69,7 @@ const FAQs_DATA = [
   },
 ];
 function FAQs() {
+  const [index, setIndex] = React.useState<number | null>(0);
   return (
     <div className="FAQs">
       <p className="section-highlight text-center ">FAQs</p>
@@ -116,7 +117,13 @@ function FAQs() {
         >
           {FAQs_DATA.map((data, i) => {
             return (
-              <Accordion defaultExpanded={i === 0}>
+              <Accordion
+                // defaultExpanded={i === 0}
+                expanded={index === i}
+                onChange={(event, expanded) => {
+                  setIndex(expanded ? i : null);
+                }}
+              >
                 <AccordionSummary>{data.question}</AccordionSummary>
                 <AccordionDetails>{data.answer}</AccordionDetails>
               </Accordion>

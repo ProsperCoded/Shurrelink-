@@ -9,6 +9,7 @@ import OurTeam from "./OurTeam/OurTeam";
 import Memories from "./LastCallToAction/LastCallToAction";
 import LastCallToAction from "./LastCallToAction/LastCallToAction";
 import FAQs from "./FAQs/FAQs";
+import Footer from "../../components/Footer/Footer";
 
 export default function Home() {
   const theme = useTheme();
@@ -24,6 +25,7 @@ export default function Home() {
         <OurTeam />
         <LastCallToAction />
         <FAQs />
+        
       </div>
     </Container>
   );

@@ -1,4 +1,6 @@
 @import "./config.scss";
+@import "./../components/Navbar/Nav.scss";
+@import "./../components/Footer/Footer.scss";
 @import "./components.scss";
 .app {
   @apply w-full;
