@@ -1,6 +1,6 @@
 import React from "react";
 import "./LastCallToAction.scss";
-import CallToAction from "../../../components/utils/GetStarted";
+import CallToAction from "../../../components/utils/CallToAction";
 function LastCallToAction() {
   return (
     <div className="last-call-to-action">
