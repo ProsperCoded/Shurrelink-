@@ -1,6 +1,6 @@
 import { Button, Container, useTheme } from "@mui/material";
 import Hero from "./Hero/Hero";
-import Features from "./Features/Features";
+import Transparency from "./Features/Features";
 import Quote from "./Quote/Quote";
 import "./Home.scss";
 import OurDestination from "./OurDestination/OurDestination";
@@ -9,6 +9,7 @@ import OurTeam from "./OurTeam/OurTeam";
 import Memories from "./LastCallToAction/LastCallToAction";
 import LastCallToAction from "./LastCallToAction/LastCallToAction";
 import FAQs from "./FAQs/FAQs";
+import Footer from "../../components/Footer/Footer";
 
 export default function Home() {
   const theme = useTheme();
@@ -17,7 +18,7 @@ export default function Home() {
     <Container>
       <div className="home">
         <Hero />
-        <Features />
+        <Transparency />
         <OurDestination />
         <Quote />
         <Testimonials />

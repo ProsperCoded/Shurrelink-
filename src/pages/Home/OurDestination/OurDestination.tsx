@@ -54,14 +54,15 @@ function OurDestination() {
       <p className="section-highlight text-center ">OUR DESTINATIONS</p>
       <p className="section-heading text-center">OUR BEST DESTINATIONS</p>
       <div className="content">
-        {destinations.map((d) => {
+        {destinations.map((d,i) => {
           return (
-            <div className="card">
+            <div className="card" key={i}>
               <div className="card__image-container">
                 <img
                   src={d.img}
                   className="card__image"
                   alt="Banff National Park"
+                  loading="lazy"
                 />
               </div>
               <div className="p-2 flex flex-col justify-between">

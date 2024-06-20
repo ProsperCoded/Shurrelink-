@@ -6,6 +6,7 @@ import {
 import App from "./App";
 import Home from "./pages/Home/Home";
 import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -15,6 +16,7 @@ export const router = createBrowserRouter(
           <>
             <Navbar />
             <Home />
+            <Footer />
           </>
         }
       />

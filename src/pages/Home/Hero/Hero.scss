@@ -59,7 +59,7 @@
     transform: translateX(0) translateY(0);
     /* Animation settings (adjust duration and easing as desired) */
     animation: moveIcon 0.6s ease-in-out alternate;
-    animation-iteration-count: 15;
+    animation-iteration-count: infinite;
   }
   .adsClickIcon::before,
   .adsClickIcon::after {
@@ -75,7 +75,7 @@
     background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black */
     opacity: 0; /* Initially invisible */
     animation: pulsate 0.6s ease-in-out alternate; /* Animation settings */
-    animation-iteration-count: 15;
+    animation-iteration-count: infinite;
   }
 
   .adsClickIcon::before {
@@ -157,6 +157,7 @@
     row-gap: 0.5rem;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr auto;
+    position: relative;
     @apply rounded-b-md shadow-md;
     &__property {
       @apply font-bold;
@@ -176,5 +177,8 @@
         color: var(--color-dark);
       }
     }
+  }
+  .apply-button {
+    @apply absolute bottom-2 right-2;
   }
 }

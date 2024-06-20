@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useId } from "react";
 import "./Testimonials.scss";
 import { Avatar, IconButton } from "@mui/material";
 import SophiaBrownImage from "./../../../assets/testimonials/pic1.jpg";
@@ -124,9 +124,9 @@ function Testimonials() {
               setActiveStep(n);
             }}
           >
-            {testimonials_nested.map((testimonials) => {
+            {testimonials_nested.map((testimonials, i) => {
               return (
-                <div className="testimonials-grid">
+                <div className="testimonials-grid" key={useId()}>
                   {testimonials.map((testimonial) => {
                     return (
                       <div className="testimonial">

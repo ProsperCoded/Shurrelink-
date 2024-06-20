@@ -1,0 +1,32 @@
+.footer {
+  @apply w-full min-w-fit bg-slate-300 mt-[2rem] border-t-2 border-t-[white];
+  box-shadow: inset 0px 1px 3px 0px #00000059;
+  @apply p-2 md:py-4 lg:py-[2rem] lg:px-[3rem];
+
+  .content {
+    @apply grid grid-cols-2 p-2 font-secondary lg:grid-cols-4;
+    .logo {
+      background-position: top center;
+    }
+    & > * {
+      margin-top: 0.5rem;
+      :nth-child(3) {
+        border-top: 2px;
+        border-color: black;
+      }
+    }
+    .social-link {
+      a {
+        @apply rounded-full border-2 border-primary w-[2rem] h-[2rem] flex justify-center items-center object-center;
+      }
+    }
+    .input-box {
+      background-color: rgba(255, 255, 255, 0.1);
+      outline: none;
+      border: 1.2px solid var(--color-dark);
+      width: clamp(6rem, 90%, 30vw);
+      padding: 5px 10px;
+      border-radius: 9999px;
+    }
+  }
+}

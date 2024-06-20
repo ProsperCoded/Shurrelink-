@@ -7,6 +7,7 @@ import CallToAction from "../utils/CallToAction";
 import { Instagram, MailLock, MailOutlined } from "@mui/icons-material";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { Divider } from "@mui/material";
+import LastCallToAction from "../../pages/Home/LastCallToAction/LastCallToAction";
 function Footer() {
   return (
     <div className="footer" id="footer">
@@ -78,7 +79,11 @@ function Footer() {
             <MailLock />
           </div>
           <div className="flex justify-center mt-4">
-            <CallToAction text="Subscribe" variant="outlined" />
+            <CallToAction
+              text="Subscribe"
+              variant="outlined"
+              color="secondary"
+            />
           </div>
         </div>
       </div>
