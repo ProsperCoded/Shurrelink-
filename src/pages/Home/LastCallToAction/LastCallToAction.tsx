@@ -12,7 +12,7 @@ function LastCallToAction() {
         <p className="text-light font-serif text-xl italic">
           "Life Is Meant For Good Friends And Great Adventures"
         </p>
-        <div className="py-8">
+        <div className="py-3 md:py-8">
           <CallToAction variant="contained" text="Book Here" />
         </div>
       </div>

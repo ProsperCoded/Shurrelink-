@@ -14,20 +14,23 @@
       content: "";
       background-image: url("../static/quote.webp");
       background-size: contain;
-      min-width: 50px;
-      min-height: 50px;
+      // min-width: 50px;
+      // min-height: 50px;
       background-repeat: no-repeat;
       position: absolute;
       object-fit: contain;
-      top: 10%;
       left: 0;
       right: 0;
       margin: 0 auto;
-      width: fit-content;
+      // width: fit-content;
+      @apply size-[30px] md:size-[50px];
+    }
+    &::before {
+      @apply top-[5%] md:top-[10px];
     }
     &::after {
       top: initial;
-      bottom: 5%;
+      @apply bottom-[-3%] md:bottom-[5%];
       transform: rotateY(180deg);
     }
   }
@@ -42,7 +45,7 @@
     mix-blend-mode: multiply;
   }
   .author {
-    @apply text-light font-bold text-lg;
+    @apply text-light font-bold text-sm md:text-lg;
     position: relative;
 
     &::before,

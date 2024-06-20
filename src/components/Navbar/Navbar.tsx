@@ -44,7 +44,7 @@ export default function Navbar() {
               setActive(Nav.about);
             }}
           >
-            <a href="/#about">About</a>
+            <a href="#features">About</a>
           </li>
 
           <li
@@ -53,7 +53,7 @@ export default function Navbar() {
               setActive(Nav.contact);
             }}
           >
-            <a href="/">Contact</a>
+            <a href="#footer">Contact</a>
           </li>
         </ul>
         <div
@@ -97,12 +97,15 @@ export function TemporaryDrawer({
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding color="secondary">
+          <a href="#features">
+
           <ListItemButton>
             <ListItemIcon>
               <InfoIcon />
             </ListItemIcon>
             <ListItemText primary="About" />
           </ListItemButton>
+          </a>
         </ListItem>
 
         <ListItem disablePadding color="secondary">

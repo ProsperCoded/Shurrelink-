@@ -25,7 +25,7 @@ import MapIcon from "@mui/icons-material/Map";
 import AdsClickIcon from "@mui/icons-material/AdsClick";
 import PinDropIcon from "@mui/icons-material/PinDrop";
 import SendIcon from "@mui/icons-material/Send";
-import { useContext, useMemo, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowRight,
   ArrowRightAltOutlined,
@@ -66,7 +66,6 @@ function Hero() {
 function HeroAddon() {
   const theme = useTheme();
   const [openLocationsModal, setOpenLocationsModal] = useState(false);
-  const [openLowestPricesModal, setOpenLowestPricesModal] = useState(false);
   return (
     <div className="hero-addon" id="hero-addon">
       <div>
@@ -79,7 +78,7 @@ function HeroAddon() {
           <span className="flex flex-col justify-center items-center">
             <MapIcon fontSize="large" />
             <h3 className="font-bold">LOCATIONS</h3>
-            <p className="capitalize">20 Slots Available</p>
+            <p className="capitalize">{locationsData.length} Slots Available</p>
             <span className="adsClickIcon">
               <AdsClickIcon />
             </span>
@@ -104,11 +103,11 @@ function HeroAddon() {
   );
 }
 
-const locations: LocationType[] = [
+const locationsData: LocationType[] = [
   {
     from: "Nigeria",
     to: "Saudi Arabia",
-    priceRange: { start: 5_000_000, end: 10_000_000 },
+    priceRange: { start: 5_000_000, end: 104_000_000 },
     requirements: [
       "Valid passport",
       "Work visa",
@@ -327,15 +326,18 @@ const locations: LocationType[] = [
 function AvailableLocations({ setOpen }: { setOpen: Function }) {
   const [openSettings, setOpenSettings] = useState(false);
   const [currency, setCurrency] = useState(acceptedCurrencies[0].NGN);
-  const priceRange = getMinPriceAndMaxPrice(locations);
+  const largestPriceRange = getMinPriceAndMaxPrice(locationsData);
+  // useEffect(() => {
+  //   console.log("price range is", location.priceRange);
+  // }, [location]);
   const [restrictedPriceRange, setRestrictedPriceRange] = useState([
-    priceRange.min,
-    priceRange.max,
+    largestPriceRange.min,
+    largestPriceRange.max,
   ]);
   const [searchValue, setSearchValue] = useState("");
   const locationOptions = useMemo(() => {
     // map out names, and flatten items returned as list
-    const flattenedList = locations
+    const flattenedList = locationsData
       .map((option) => {
         return [option.from, option.to];
       })
@@ -345,7 +347,7 @@ function AvailableLocations({ setOpen }: { setOpen: Function }) {
     return uniqueList;
   }, []);
   const locationsAfterFilter = useMemo(() => {
-    let filteredLocations = locations;
+    let filteredLocations = locationsData;
     // filter by price range
     filteredLocations = filteredLocations.filter((l) => {
       if (
@@ -356,6 +358,7 @@ function AvailableLocations({ setOpen }: { setOpen: Function }) {
     });
     if (searchValue) {
       // filter by search value
+      console.log("recalculating searchValue", searchValue);
       filteredLocations = filteredLocations.filter((l) => {
         return (
           l.from.toLowerCase().includes(searchValue.toLowerCase()) ||
@@ -364,7 +367,7 @@ function AvailableLocations({ setOpen }: { setOpen: Function }) {
       });
     }
     return filteredLocations;
-  }, [locations, restrictedPriceRange, searchValue]);
+  }, [locationsData, restrictedPriceRange, searchValue]);
   const exchangeRates = useContext(ExchangeRatesContext) as ExchangeRates;
   return (
     <div className="available-locations">
@@ -424,7 +427,7 @@ function AvailableLocations({ setOpen }: { setOpen: Function }) {
             </FormControl>
           </div>
           <div className="flex justify-between items-center">
-            <h3 className="font-bold">Filter According To Prices</h3>
+            <h3 className="font-bold">Filter To Prices</h3>
             <Slider
               getAriaLabel={() => "Min & Max Setter"}
               value={restrictedPriceRange}
@@ -434,8 +437,8 @@ function AvailableLocations({ setOpen }: { setOpen: Function }) {
               }}
               // step={100}
               // marks
-              min={priceRange.min}
-              max={priceRange.max}
+              min={largestPriceRange.min}
+              max={largestPriceRange.max}
               valueLabelDisplay="on"
               getAriaValueText={(e) => {
                 return convertPrices(
@@ -451,13 +454,12 @@ function AvailableLocations({ setOpen }: { setOpen: Function }) {
       <Autocomplete
         id="search"
         freeSolo
-        value={searchValue}
         onChange={(e: any) => {
-          console.log("value is ", e.target.value);
-          setSearchValue(e.target.value);
+          console.log("value changed to", e.target.innerText);
+          setSearchValue(e.target.innerText);
         }}
         getOptionLabel={(option: string) => {
-          console.log("option", option);
+          // console.log("option", option);
           if (!option) return "none";
           return option;
         }}
@@ -470,7 +472,7 @@ function AvailableLocations({ setOpen }: { setOpen: Function }) {
         {locationsAfterFilter.map((l, i) => {
           return (
             <LocationComponent
-              location={{
+              locationData={{
                 from: l.from,
                 to: l.to,
                 priceRange: l.priceRange,
@@ -527,10 +529,10 @@ function AvailableLocations({ setOpen }: { setOpen: Function }) {
 export default Hero;
 
 const LocationComponent = ({
-  location,
+  locationData,
   currency,
 }: {
-  location: LocationType;
+  locationData: LocationType;
   currency?: CurrencyType;
 }) => {
   const [contentCollapsed, setContentCollapsed] = useState(false);
@@ -541,8 +543,12 @@ const LocationComponent = ({
   const exchangeRates = useContext(ExchangeRatesContext) as ExchangeRates;
 
   const convertedPriceRange = useMemo(() => {
-    return convertPrices(currency, location, exchangeRates);
-  }, [currency]);
+    return convertPrices(currency, locationData, exchangeRates);
+    // return { start: location.priceRange.start, end: location.priceRange.end };
+  }, [currency, locationData]);
+  useEffect(() => {
+    console.log("price range is", locationData.priceRange);
+  }, [locationData]);
   return (
     <div className="location">
       <header
@@ -553,7 +559,7 @@ const LocationComponent = ({
       >
         <div className="item_labelled">
           <span className="label">From</span>
-          <span className="item">{location.from}</span>
+          <span className="item">{locationData.from}</span>
         </div>
         <div className="send-icon">
           <div className="relative size-full flex justify-center items-center">
@@ -567,7 +573,7 @@ const LocationComponent = ({
         </div>
         <div className="item_labelled" style={{ marginLeft: "-10px" }}>
           <span className="label">To</span>
-          <span className="item">{location.to}</span>
+          <span className="item">{locationData.to}</span>
         </div>
         <div
           className={
@@ -588,7 +594,7 @@ const LocationComponent = ({
         <div className="description">
           <span className="description__property">PURPOSE</span>
           <span className="description__property-value">
-            {location.purpose}
+            {locationData.purpose}
           </span>
           <span className="description__property">PRICE RANGE</span>
           <span className="description__property-value">
@@ -601,7 +607,7 @@ const LocationComponent = ({
           <div className="requirements">
             <span className="description__property">REQUIREMENTS</span>
             <ul className="description__property-value">
-              {location.requirements.map((r, i) => {
+              {locationData.requirements.map((r, i) => {
                 return (
                   <li key={i}>
                     <span>{r}</span>
@@ -609,6 +615,9 @@ const LocationComponent = ({
                 );
               })}
             </ul>
+          </div>
+          <div className="apply-button">
+            <Button variant="contained"> Apply Now</Button>
           </div>
         </div>
       </Collapse>

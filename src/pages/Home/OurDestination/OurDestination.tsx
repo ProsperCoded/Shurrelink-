@@ -62,6 +62,7 @@ function OurDestination() {
                   src={d.img}
                   className="card__image"
                   alt="Banff National Park"
+                  loading="lazy"
                 />
               </div>
               <div className="p-2 flex flex-col justify-between">

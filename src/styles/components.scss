@@ -55,7 +55,7 @@
   @apply text-lg text-primary-dark font-bold tracking-wider;
 }
 .section-heading {
-  @apply text-4xl font-bold my-2;
+  @apply text-2xl md:text-3xl lg:text-4xl font-bold my-2;
 }
 .section-text {
   @apply font-secondary text-slate-800;

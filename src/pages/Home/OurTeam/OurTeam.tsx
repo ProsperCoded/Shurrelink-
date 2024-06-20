@@ -86,14 +86,15 @@ function OurTeam() {
           </p>
         </div>
         <div className="team-members">
-          {teamMembers.map((member) => {
+          {teamMembers.map((member, i) => {
             return (
-              <div className="team-member">
+              <div className="team-member" key={i}>
                 <div className="size-full overflow-hidden rounded-[1rem]">
                   <img
                     src={member.img}
                     alt="Team Member Image"
                     className="team-member__img"
+                    loading="lazy"
                   />
                 </div>
                 <div className="team-member__info">

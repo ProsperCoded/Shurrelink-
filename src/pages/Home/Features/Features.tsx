@@ -1,14 +1,31 @@
 import React from "react";
 import "./Features.scss";
 import CallToAction from "../../../components/utils/CallToAction";
-import PrivacyImage from "./../../../assets/img/privacy_policy.webp";
+import RefundPolicy from "./../../../assets/img/privacy_policy.webp";
 import WhyChooseUsImage from "./../../../assets/img/why_choose_us.webp";
 import HowWeDeliverImage from "./../../../assets/img/how_we_deliver.webp";
 import { Tooltip } from "@mui/material";
 import CarouselImages from "../../../components/utils/CarouselImages/CarouselImages";
-function Features() {
+const TransparencyInfo = [
+  {
+    heading: "Why Choose Us",
+    body: "stands out for  our specialized focus on helping Nigerians migrate to established countries. Our expertise in international relocation and commitment to personalized service ensures you receive the best support.",
+    img: WhyChooseUsImage,
+  },
+  {
+    heading: "How We Deliver",
+    body: "handles all travel arrangements, including domestic and international flights. We partner with reputable airlines for competitive prices and coordinated, stress-free travel.",
+    img: HowWeDeliverImage,
+  },
+  {
+    heading: "Refund Policy",
+    body: "we are committed to providing reliable services. If the migration process does not go as expected due to our fault, we offer a full refund. We prioritize your trust and peace of mind.",
+    img: RefundPolicy,
+  },
+];
+function Transparency() {
   return (
-    <div className="features">
+    <div className="features" id="features">
       <div className="content">
         <div>
           <h3 className="section-highlight">Welcome to Shurrlink</h3>
@@ -25,79 +42,42 @@ function Features() {
             <CallToAction variant="contained" text="Get Started" />
           </div>
         </div>
-        <div className="features__images--phone lg:hidden">
-          <CarouselImages />
+        <div className="features__images--phone mt-6 lg:hidden">
+          <CarouselImages data={TransparencyInfo} />
         </div>
         <div className="features__images--desktop hidden lg:block">
-          <div>
-            <Tooltip
-              arrow
-              color="primary"
-              placement="left"
-              title={
-                <p className="text-sm">
-                  <b className="text-primary-light">Surrelink</b> stands out for
-                  our specialized focus on helping Nigerians migrate to
-                  established countries. Our expertise in international
-                  relocation and commitment to personalized service ensures you
-                  receive the best support.
-                </p>
-              }
-            >
-              <div>
-                <img src={WhyChooseUsImage} alt="Why Choose Us Image" />
-                <p className="content-hover">
-                  <span>Why Choose Us</span>
-                </p>
+          {TransparencyInfo.map((info, i) => {
+            return (
+              <div key={i}>
+                <Tooltip
+                  arrow
+                  color="primary"
+                  placement="left"
+                  title={
+                    <p className="text-sm">
+                      <b className="text-primary-light">Surrelink</b>
+                      {info.body}
+                    </p>
+                  }
+                >
+                  <div>
+                    <img
+                      src={info.img}
+                      alt="Why Choose Us Image"
+                      loading="lazy"
+                    />
+                    <p className="content-hover">
+                      <span>{info.heading}</span>
+                    </p>
+                  </div>
+                </Tooltip>
               </div>
-            </Tooltip>
-          </div>
-          <div>
-            <Tooltip
-              arrow
-              placement="top"
-              title={
-                <p className="text-sm">
-                  <b className="text-primary-light">Surrelink</b> handles all
-                  travel arrangements, including domestic and international
-                  flights. We partner with reputable airlines for competitive
-                  prices and coordinated, stress-free travel.
-                </p>
-              }
-            >
-              <div>
-                <img src={HowWeDeliverImage} alt="How We Deliver Image" />
-                <p className="content-hover">
-                  <span>How We Deliver</span>
-                </p>
-              </div>
-            </Tooltip>
-          </div>
-          <div>
-            <Tooltip
-              title={
-                <p className="text-sm">
-                  At <b className="text-primary-light">Surrelink</b>, we are
-                  committed to providing reliable services. If the migration
-                  process does not go as expected due to our fault, we offer a
-                  full refund. We prioritize your trust and peace of mind.
-                </p>
-              }
-              arrow
-              placement="top"
-            >
-              <div>
-                <img src={PrivacyImage} alt="Privacy Image" />
-                <p className="content-hover">
-                  <span>Refund Policy</span>
-                </p>
-              </div>
-            </Tooltip>
-          </div>
+            );
+          })}
         </div>
       </div>
     </div>
   );
 }
 
-export default Features;
+export default Transparency;

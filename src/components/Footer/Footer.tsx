@@ -10,13 +10,13 @@ import { Divider } from "@mui/material";
 import LastCallToAction from "../../pages/Home/LastCallToAction/LastCallToAction";
 function Footer() {
   return (
-    <div className="footer">
+    <div className="footer" id="footer">
       <div className="content text-sm lg:text-base">
         <div>
           <div className="logo-container w-[7rem] h-[4rem] flex flex-col shrink-0 mb-2">
             <div className="logo"></div>
           </div>
-          <p className="my-4 font-secondary">
+          <p className="my-4 ml-2 font-serif italic font-semibold text-sm text-slate-700">
             Let the Traveler In You Fly With Us
           </p>
           <div className="social-link mt-2 flex gap-2">

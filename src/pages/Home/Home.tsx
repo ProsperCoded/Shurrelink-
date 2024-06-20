@@ -1,6 +1,6 @@
 import { Button, Container, useTheme } from "@mui/material";
 import Hero from "./Hero/Hero";
-import Features from "./Features/Features";
+import Transparency from "./Features/Features";
 import Quote from "./Quote/Quote";
 import "./Home.scss";
 import OurDestination from "./OurDestination/OurDestination";
@@ -18,14 +18,13 @@ export default function Home() {
     <Container>
       <div className="home">
         <Hero />
-        <Features />
+        <Transparency />
         <OurDestination />
         <Quote />
         <Testimonials />
         <OurTeam />
         <LastCallToAction />
         <FAQs />
-        
       </div>
     </Container>
   );

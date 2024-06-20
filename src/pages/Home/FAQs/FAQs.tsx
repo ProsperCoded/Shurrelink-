@@ -9,7 +9,6 @@ import {
   AccordionGroup,
   AccordionSummary,
 } from "@mui/joy";
-// import { Accordion, AccordionDetails } from "@mui/material";
 const FAQs_DATA = [
   {
     question: "What services does Surrelink offer?",
@@ -119,6 +118,7 @@ function FAQs() {
             return (
               <Accordion
                 // defaultExpanded={i === 0}
+                key={i}
                 expanded={index === i}
                 onChange={(event, expanded) => {
                   setIndex(expanded ? i : null);

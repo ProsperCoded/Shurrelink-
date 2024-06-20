@@ -62,6 +62,9 @@ export function convertFromNaira(
 }
 export function getMinPriceAndMaxPrice(locations: LocationType[]) {
   // This method is to determine the min price, and maximum price of available locations
+  if (locations.length === 0) {
+    return { min: 0, max: 0 };
+  }
   let { priceRange } = locations.reduce(
     (value, accumulator) => {
       value.priceRange.start;
