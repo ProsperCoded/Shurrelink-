@@ -1,6 +1,12 @@
 .our-team {
   border-radius: var(--container-border-radius);
-  @apply bg-slate-200 p-[1rem];
+  @apply p-[1rem];
+  background: rgba(255, 255, 255, 0.2); /* Light translucent white */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  -webkit-backdrop-filter: blur(10px); /* Support for older browsers */
+  border-radius: 10px; /* Rounded corners */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Slight border */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   .content {
     grid-template-columns: 1fr minmax(20px, 1.2fr);
 
@@ -18,7 +24,7 @@
     // height: 300px; /* Optional: Sets container height */
     &::-webkit-scrollbar {
       width: 16px;
-      z-index: -1;
+      // z-index: -1;
     }
 
     &::-webkit-scrollbar-track {
@@ -50,7 +56,18 @@
       object-position: center;
     }
     &__info {
-      @apply bg-slate-100 p-3 absolute text-center rounded-[1.5rem];
+      @apply p-3 absolute text-center rounded-[1.5rem];
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.4),
+        rgba(255, 255, 255, 0.1)
+      ); /* Subtle gradient */
+      backdrop-filter: blur(15px); /* Stronger blur effect */
+      -webkit-backdrop-filter: blur(15px); /* Cross-browser support */
+      border-radius: 20px; /* More rounded corners */
+      border: 2px solid rgba(255, 255, 255, 0.5); /* Slightly stronger border */
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25); /* Stronger shadow for depth */
+
       bottom: 0;
       transform: translateY(50%);
       left: 0;
@@ -63,7 +80,7 @@
       @apply font-extrabold;
     }
     &__role {
-      @apply font-bold text-slate-600;
+      @apply font-bold text-slate-100;
     }
     &__handles {
       @apply mt-4 flex justify-around gap-5;

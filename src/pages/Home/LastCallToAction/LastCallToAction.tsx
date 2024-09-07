@@ -4,16 +4,17 @@ import CallToAction from "../../../components/utils/CallToAction";
 function LastCallToAction() {
   return (
     <div className="last-call-to-action">
-      <div className="content space-y-4">
-        <p className="section-highlight text-center ">START YOUR ADVENTURE</p>
-        <p className="section-heading text-center text-light">
+      <div className="space-y-4 content">
+        <p className="text-center section-highlight">START YOUR ADVENTURE</p>
+        <p className="text-center text-light section-heading">
           Let's Explore This World
         </p>
-        <p className="text-light font-serif text-xl italic">
+        <p className="font-serif text-light text-xl italic">
           "Life Is Meant For Good Friends And Great Adventures"
         </p>
         <div className="py-3 md:py-8">
-          <CallToAction variant="contained" text="Book Here" />
+          {/* <CallToAction variant="contained" text="Book Here" /> */}
+          <button className="glass-button">Book Here</button>
         </div>
       </div>
     </div>

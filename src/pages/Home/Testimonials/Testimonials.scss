@@ -4,9 +4,21 @@
 
     @apply flex  flex-col lg:grid gap-8;
   }
+  overflow-x: visible;
 }
 .testimonial {
-  @apply font-secondary bg-slate-200 shadow-md grid grid-rows-[1.2fr_1fr]  rounded-lg p-4 w-full min-h-[10rem];
+  @apply font-secondary  shadow-md grid grid-rows-[1.2fr_1fr]  rounded-lg p-4 w-full min-h-[10rem];
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.1)
+  ); /* Subtle gradient */
+  backdrop-filter: blur(15px); /* Stronger blur effect */
+  -webkit-backdrop-filter: blur(15px); /* Cross-browser support */
+  border-radius: 20px; /* More rounded corners */
+  border: 2px solid rgba(255, 255, 255, 0.5); /* Slightly stronger border */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25); /* Stronger shadow for depth */
   & :has(> .testimonial__name) {
     @apply inline-flex flex-col;
   }
@@ -18,8 +30,11 @@
   }
 }
 .testimonials-grid {
+  padding: 2rem;
+  padding-bottom: 0;
   display: grid;
   @apply grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 lg:gap-4;
   justify-items: stretch;
   align-items: stretch;
+  overflow: visible;
 }

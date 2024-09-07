@@ -1,30 +1,15 @@
-// .our-destination {
-//   background-image: url("../static/our-destination.webp");
-//   background-size: cover;
-//   background-position: center;
-//   margin-top: 10%;
-//   height: 40vh;
-//   width: 100%;
-//   z-index: 1;
-//   position: relative;
-//   color: var(--color-light);
-
-//   border-radius: var(--container-border-radius);
-//   overflow: hidden;
-//   padding: 1rem;
-//   &::after {
-//     content: "";
-//     position: absolute;
-//     inset: 0;
-//     z-index: -1;
-
-//     background-color: rgb(255 255 255 / 40%);
-//     mix-blend-mode: overlay;
-//   }
-// }
-
 .our-destination {
-  @apply bg-slate-200 p-[1rem] pt-[2rem] lg:p-[3rem] relative;
+  @apply p-[1rem] pt-[2rem] lg:p-[3rem] relative;
+  // @apply bg-slate-200;
+
+  // translucent glass
+  background: rgba(255, 255, 255, 0.2); /* Light translucent white */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  -webkit-backdrop-filter: blur(10px); /* Support for older browsers */
+  border-radius: 10px; /* Rounded corners */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Slight border */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+
   border-radius: var(--container-border-radius);
   .content {
     display: grid;

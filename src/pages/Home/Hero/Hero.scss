@@ -26,10 +26,12 @@
     position: absolute;
     inset: var(--inset);
 
-    @apply flex items-center justify-start flex-col p-4 text-light text-xl text-center;
-    text-shadow: 0 0 3px #252525;
+    @apply flex items-center justify-between flex-col p-4 text-light text-xl text-center;
+    // text-shadow: 0 0 3px #252525;
+    text-shadow: 0 0 4px #dfdfdf;
     p {
-      text-shadow: 0 0 4px #021e00;
+      text-shadow: 0 0 4px #dfdfdf;
+      // @apply tracking-wider;
     }
   }
 }
