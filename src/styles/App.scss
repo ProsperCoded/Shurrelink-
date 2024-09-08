@@ -8,32 +8,3 @@
 .app {
   @apply w-full;
 }
-.glass-button {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.25),
-    rgba(255, 255, 255, 0.1)
-  ); /* Gradient for depth */
-  backdrop-filter: blur(10px); /* Blur for glass effect */
-  -webkit-backdrop-filter: blur(10px); /* Support for older browsers */
-  border-radius: 12px; /* Rounded button corners */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Thin translucent border */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
-  color: #fff; /* White text for contrast */
-  padding: 12px 24px; /* Button padding */
-  font-size: 16px; /* Button text size */
-  text-transform: uppercase; /* Make text uppercase */
-  letter-spacing: 1px; /* Add letter spacing for style */
-  cursor: pointer; /* Change cursor to pointer */
-  transition: all 0.3s ease; /* Smooth hover animation */
-}
-
-.glass-button:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.4),
-    rgba(255, 255, 255, 0.2)
-  ); /* Lighter on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Larger shadow on hover */
-  transform: scale(1.05); /* Slight scale-up on hover */
-}

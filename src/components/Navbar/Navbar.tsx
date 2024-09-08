@@ -24,12 +24,12 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   return (
     <div className="nav">
-      <div className="flex w-full items-end justify-between md:justify-around">
+      <div className="flex justify-between md:justify-around items-end w-full">
         <div className="logo-container">
           <span className="logo"></span>
         </div>
 
-        <ul className="nav--links hidden mx-auto md:flex">
+        <ul className="md:flex hidden mx-auto nav--links">
           <li
             className={active === Nav.home ? "active" : ""}
             onClick={() => {
@@ -57,7 +57,7 @@ export default function Navbar() {
           </li>
         </ul>
         <div
-          className="toggler ml-auto md:hidden"
+          className="md:hidden ml-auto toggler"
           onClick={() => {
             setMenuOpen((p) => !p);
           }}
@@ -65,8 +65,8 @@ export default function Navbar() {
           {menuOpen ? <MenuOpenIcon /> : <MenuIcon />}
         </div>
         <TemporaryDrawer open={menuOpen} setOpen={setMenuOpen} />
-        <div className="hidden md:block">
-          <CallToAction variant="outlined" text="Get Started" />
+        <div className="md:block hidden">
+          <CallToAction variant="contained" text="Get Started" />
         </div>
       </div>
     </div>
@@ -98,13 +98,12 @@ export function TemporaryDrawer({
         </ListItem>
         <ListItem disablePadding color="secondary">
           <a href="#features">
-
-          <ListItemButton>
-            <ListItemIcon>
-              <InfoIcon />
-            </ListItemIcon>
-            <ListItemText primary="About" />
-          </ListItemButton>
+            <ListItemButton>
+              <ListItemIcon>
+                <InfoIcon />
+              </ListItemIcon>
+              <ListItemText primary="About" />
+            </ListItemButton>
           </a>
         </ListItem>
 
