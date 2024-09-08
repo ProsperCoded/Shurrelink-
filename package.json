@@ -15,6 +15,7 @@
     "@mui/icons-material": "^5.15.20",
     "@mui/joy": "5.0.0-beta.36",
     "@mui/material": "^5.15.20",
+    "@mui/system": "^6.0.2",
     "@radix-ui/react-slot": "^1.1.0",
     "@types/react-swipeable-views": "^0.13.5",
     "@types/react-swipeable-views-utils": "^0.13.7",
