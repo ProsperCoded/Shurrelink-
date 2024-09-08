@@ -6,6 +6,8 @@
   vertical-align: center;
   border-radius: var(--container-border-radius);
   overflow: hidden;
+  position: relative;
+  z-index: 1;
   @apply px-3 py-6  md:px-5 md:py-[5rem];
   p {
     @apply font-bold font-serif text-xl md:text-4xl italic text-light tracking-wide;
@@ -34,8 +36,7 @@
       transform: rotateY(180deg);
     }
   }
-  position: relative;
-  z-index: 1;
+
   &::after {
     content: "";
     position: absolute;
